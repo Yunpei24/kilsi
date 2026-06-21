@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ============================================================
+   KILSI AI — Design System (Tailwind CSS 4 Theme)
+   ============================================================ */
+
+@theme {
+  /* ---- Colors ---- */
+  --color-kilsi-night: #0A1733;
+  --color-kilsi-night-light: #0F2045;
+  --color-kilsi-blue: #1F5BFF;
+  --color-kilsi-sky: #4F9CFF;
+  --color-kilsi-gold: #E8B23A;
+  --color-kilsi-gold-deep: #C68A10;
+  --color-kilsi-graphite: #94A3B8;
+  --color-kilsi-gray: #CBD5E1;
+  --color-kilsi-light: #EEF2F8;
+
+  /* ---- Typography ---- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Outfit', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Animations ---- */
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-reveal-up: reveal-up 0.8s ease-out forwards;
+  --animate-reveal-left: reveal-left 0.8s ease-out forwards;
+  --animate-reveal-right: reveal-right 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-bounce-slow: bounce-slow 2.5s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-typewriter: typewriter 3s steps(50) forwards;
+  --animate-gradient: gradient-shift 8s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 178, 58, 0.3), 0 0 40px rgba(232, 178, 58, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(232, 178, 58, 0.5), 0 0 60px rgba(232, 178, 58, 0.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+@keyframes counter-grow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #0A1733;
+  color: #EEF2F8;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll snap sections */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(31, 91, 255, 0.3);
+  box-shadow:
+    0 0 30px rgba(31, 91, 255, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #4F9CFF, #1F5BFF, #E8B23A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold gradient text */
+.gradient-text-gold {
+  background: linear-gradient(135deg, #E8B23A, #C68A10, #E8B23A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient background */
+.animated-gradient-bg {
+  background: linear-gradient(
+    -45deg,
+    #0A1733,
+    #0F2045,
+    #0A1733,
+    #111D3A
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+/* Animated gradient background — diagonal variant */
+.animated-gradient-bg-diagonal {
+  background: linear-gradient(
+    135deg,
+    #0A1733,
+    #0F2045,
+    #111D3A,
+    #0A1733
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 10s ease-in-out infinite;
+}
+
+/* Video overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 23, 51, 0.7) 0%,
+    rgba(10, 23, 51, 0.5) 50%,
+    rgba(10, 23, 51, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A1733;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(31, 91, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 91, 255, 0.5);
+}
+
+/* ============================================================
+   RESPONSIVE — Disable scroll-snap on mobile
+   ============================================================ */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  .snap-section {
+    min-height: 100vh;
+    height: auto;
+  }
+}
+
+/* ============================================================
+   Selection styling
+   ============================================================ */
+::selection {
+  background: rgba(31, 91, 255, 0.3);
+  color: #EEF2F8;
+}
