@@ -64,7 +64,35 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     'footer.copyright': 'Tous droits réservés.',
-    'footer.slogan': 'Intelligence built in Africa, designed for the world.'
+    'footer.slogan': 'Intelligence built in Africa, designed for the world.',
+
+    // FasoLabel
+    'fasolabel.title': 'Projet FasoLabel — Annotation Souveraine',
+    'fasolabel.tagline': 'Participez à la création de l\'IA de demain, en langues locales.',
+    'fasolabel.desc': 'FasoLabel est une initiative souveraine d\'annotation de données conçue, opérée et hébergée au Burkina Faso dans le cadre de la stratégie nationale « zéro donnée à l\'extérieur ». Nous concevons des jeux de données d\'entraînement de qualité pour l\'IA, notamment pour le Mooré et le Dioula, en s\'appuyant sur une communauté locale rémunérée équitablement.',
+    'fasolabel.req.title': 'Profils recherchés',
+    'fasolabel.req.1': 'Niveau d\'études Baccalauréat minimum.',
+    'fasolabel.req.2': 'Maîtrise parlée et écrite du Mooré ou du Dioula (langues locales).',
+    'fasolabel.req.3': 'Aisance avec les outils numériques (ordinateur, internet).',
+    'fasolabel.form.title': 'Formulaire de Candidature',
+    'fasolabel.form.lastname': 'Nom',
+    'fasolabel.form.lastname.placeholder': 'Votre nom de famille',
+    'fasolabel.form.firstname': 'Prénom',
+    'fasolabel.form.firstname.placeholder': 'Votre prénom',
+    'fasolabel.form.whatsapp': 'Numéro WhatsApp',
+    'fasolabel.form.whatsapp.placeholder': '+226 XX XX XX XX',
+    'fasolabel.form.email': 'Adresse Email',
+    'fasolabel.form.email.placeholder': 'votre@email.com',
+    'fasolabel.form.studies': 'Niveau d\'études',
+    'fasolabel.form.langs': 'Langues locales maîtrisées (sélectionnez au moins une)',
+    'fasolabel.form.cv': 'Votre Curriculum Vitae (format PDF, max 5 Mo)',
+    'fasolabel.form.cv.select': 'Sélectionner un fichier',
+    'fasolabel.form.cv.selected': 'Fichier sélectionné',
+    'fasolabel.form.motivation': 'Motivation et expérience d\'annotation',
+    'fasolabel.form.motivation.placeholder': 'Décrivez brièvement pourquoi vous souhaitez rejoindre FasoLabel...',
+    'fasolabel.form.submit': 'Soumettre ma candidature',
+    'fasolabel.form.submitting': 'Envoi en cours...',
+    'fasolabel.form.success': 'Votre candidature a été envoyée avec succès ! L\'équipe FasoLabel vous contactera sur WhatsApp ou par email sous peu.'
   },
   en: {
     // Navbar
@@ -121,7 +149,35 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     'footer.copyright': 'All rights reserved.',
-    'footer.slogan': 'Intelligence built in Africa, designed for the world.'
+    'footer.slogan': 'Intelligence built in Africa, designed for the world.',
+
+    // FasoLabel
+    'fasolabel.title': 'FasoLabel Project — Sovereign Annotation',
+    'fasolabel.tagline': 'Join us in building tomorrow\'s AI, in local languages.',
+    'fasolabel.desc': 'FasoLabel is a sovereign data annotation initiative designed, operated, and hosted in Burkina Faso as part of the national \'zero data outside\' strategy. We create high-quality training datasets for AI, focusing on Mooré and Dioula, powered by a fairly compensated local community.',
+    'fasolabel.req.title': 'Required Profiles',
+    'fasolabel.req.1': 'Minimum Baccalaureate education level.',
+    'fasolabel.req.2': 'Spoken and written mastery of Mooré or Dioula (local languages).',
+    'fasolabel.req.3': 'Comfortable with digital tools (computer and internet access).',
+    'fasolabel.form.title': 'Application Form',
+    'fasolabel.form.lastname': 'Last Name',
+    'fasolabel.form.lastname.placeholder': 'Your last name',
+    'fasolabel.form.firstname': 'First Name',
+    'fasolabel.form.firstname.placeholder': 'Your first name',
+    'fasolabel.form.whatsapp': 'WhatsApp Number',
+    'fasolabel.form.whatsapp.placeholder': '+226 XX XX XX XX',
+    'fasolabel.form.email': 'Email Address',
+    'fasolabel.form.email.placeholder': 'your@email.com',
+    'fasolabel.form.studies': 'Level of Studies',
+    'fasolabel.form.langs': 'Mastered local languages (select at least one)',
+    'fasolabel.form.cv': 'Your Curriculum Vitae (PDF format, max 5MB)',
+    'fasolabel.form.cv.select': 'Select a file',
+    'fasolabel.form.cv.selected': 'Selected file',
+    'fasolabel.form.motivation': 'Motivation & annotation experience',
+    'fasolabel.form.motivation.placeholder': 'Briefly describe why you want to join FasoLabel...',
+    'fasolabel.form.submit': 'Submit Application',
+    'fasolabel.form.submitting': 'Submitting...',
+    'fasolabel.form.success': 'Your application has been submitted successfully! The FasoLabel team will contact you on WhatsApp or email shortly.'
   }
 };
 
