@@ -30,6 +30,7 @@ function Navbar() {
     { label: t('nav.about'), href: '/#about' },
     { label: t('nav.services'), href: '/#services' },
     { label: t('nav.team'), href: '/#team' },
+    { label: t('nav.blog'), href: '/blog' },
     { label: t('nav.contact'), href: '/#contact' },
   ];
 
