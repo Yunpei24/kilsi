@@ -21,11 +21,9 @@ function Section({
     <section
       id={id}
       className={`snap-section relative h-screen w-full overflow-hidden ${
-        !videoSrc
-          ? diagonalGradient
-            ? 'animated-gradient-bg-diagonal'
-            : 'animated-gradient-bg'
-          : ''
+        diagonalGradient
+          ? 'animated-gradient-bg-diagonal'
+          : 'animated-gradient-bg'
       } ${className}`}
     >
       {/* Video background */}
@@ -36,6 +34,7 @@ function Section({
           loop
           muted
           playsInline
+          preload="auto"
           src={videoSrc}
           className="absolute inset-0 h-full w-full object-cover"
           aria-hidden="true"

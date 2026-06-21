@@ -41,13 +41,13 @@ const ServiceCard = ({ name, subtitle, description, icon, index }: ServiceCardPr
       <Link to={`/branches/${branchId}`} className="block h-full cursor-pointer">
         <article className="glass-card group rounded-2xl p-6 lg:p-8 h-full flex flex-col hover:scale-[1.02] transition-all duration-300">
           {/* Icon */}
-          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl border border-kilsi-blue/20 bg-kilsi-blue/10">
+          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl border border-kilsi-blue/20 bg-kilsi-blue/10 transition-all duration-300 group-hover:border-kilsi-gold/30 group-hover:bg-kilsi-gold/5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
-              className="h-7 w-7 stroke-kilsi-blue transition-colors duration-300 group-hover:stroke-kilsi-gold"
+              className="h-7 w-7 stroke-kilsi-blue transition-all duration-300 group-hover:stroke-kilsi-gold group-hover:scale-110 group-hover:rotate-3"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
             </svg>

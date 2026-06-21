@@ -182,9 +182,9 @@ function BranchPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {branch.services.map((service, index) => (
                 <RevealOnScroll key={service.title[language]} direction="right" delay={index * 100}>
-                  <div className="glass-card p-6 sm:p-8 rounded-2xl h-full border border-white/5 hover:border-kilsi-blue/20 transition-all duration-300">
+                  <div className="glass-card group p-6 sm:p-8 rounded-2xl h-full border border-white/5 hover:border-kilsi-blue/20 transition-all duration-300">
                     <h3 className="font-display text-lg font-bold text-kilsi-light mb-3 flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-kilsi-blue" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-kilsi-blue transition-all duration-300 group-hover:scale-125 group-hover:bg-kilsi-gold" />
                       {service.title[language]}
                     </h3>
                     <p className="text-sm text-kilsi-gray leading-relaxed">

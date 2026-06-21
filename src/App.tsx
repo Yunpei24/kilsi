@@ -8,6 +8,7 @@ import TeamSection from './components/team/TeamSection'
 import ContactSection from './components/contact/ContactSection'
 import BranchPage from './components/branch/BranchPage'
 import ScrollToTop from './components/layout/ScrollToTop'
+import PageTransition from './components/layout/PageTransition'
 import { useLanguage } from './context/LanguageContext';
 
 function Home() {
@@ -58,8 +59,8 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/branches/:id" element={<BranchPage />} />
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/branches/:id" element={<PageTransition><BranchPage /></PageTransition>} />
           </Routes>
         </main>
       </div>
