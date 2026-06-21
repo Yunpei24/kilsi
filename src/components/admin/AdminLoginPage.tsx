@@ -12,10 +12,15 @@ function AdminLoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Debug environment variables loading in the browser
+    console.log('VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL ? 'Loaded' : 'Undefined');
+    console.log('VITE_SUPABASE_ANON_KEY:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'Loaded' : 'Undefined');
+
     // If user is already logged in, redirect straight to dashboard
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
+        console.log('Session active found, redirecting to /admin');
         navigate('/admin');
       }
     };
