@@ -108,9 +108,9 @@ function AdminLoginPage() {
 
             <div className="mt-4">
               <GlowButton
+                type="submit"
                 variant="gold"
                 className="w-full justify-center"
-                onClick={() => {}}
                 disabled={loading}
               >
                 {loading ? 'Connexion en cours...' : 'Se connecter'}

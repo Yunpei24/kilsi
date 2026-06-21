@@ -621,7 +621,7 @@ function AdminDashboardPage() {
                 >
                   Annuler
                 </button>
-                <GlowButton variant="gold" size="md" onClick={() => {}}>
+                <GlowButton type="submit" variant="gold" size="md">
                   Enregistrer l'article
                 </GlowButton>
               </div>
@@ -773,7 +773,7 @@ function AdminDashboardPage() {
                 >
                   Annuler
                 </button>
-                <GlowButton variant="gold" size="md" onClick={() => {}}>
+                <GlowButton type="submit" variant="gold" size="md">
                   Enregistrer FAQ
                 </GlowButton>
               </div>
