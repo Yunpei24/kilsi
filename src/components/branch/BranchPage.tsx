@@ -6,6 +6,7 @@ import Section from '../layout/Section';
 import GlowButton from '../ui/GlowButton';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import ScrollIndicator from '../ui/ScrollIndicator';
+import { supabase } from '../../lib/supabaseClient';
 
 function BranchPage() {
   const { id } = useParams<{ id: string }>();
@@ -27,6 +28,7 @@ function BranchPage() {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -44,12 +46,57 @@ function BranchPage() {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      let cvUrl = '';
+      if (cvFile) {
+        const fileExt = cvFile.name.split('.').pop();
+        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('cv-uploads')
+          .upload(fileName, cvFile);
+
+        if (uploadError) {
+          throw new Error(language === 'fr' 
+            ? "Erreur lors de l'envoi du CV dans le cloud." 
+            : "Error uploading CV file to cloud storage.");
+        }
+
+        if (uploadData) {
+          const { data: { publicUrl } } = supabase.storage
+            .from('cv-uploads')
+            .getPublicUrl(fileName);
+          cvUrl = publicUrl;
+        }
+      }
+
+      const langs: string[] = [];
+      if (formData.moore) langs.push('Mooré');
+      if (formData.dioula) langs.push('Dioula');
+
+      const { error: insertError } = await supabase
+        .from('fasolabel_applications')
+        .insert([{
+          last_name: formData.lastName,
+          first_name: formData.firstName,
+          whatsapp: formData.whatsapp,
+          email: formData.email,
+          studies: formData.studies,
+          languages: langs,
+          motivation: formData.motivation,
+          cv_url: cvUrl
+        }]);
+
+      if (insertError) {
+        throw new Error(language === 'fr'
+          ? "Erreur lors de l'enregistrement de votre candidature."
+          : "Error recording your application in database.");
+      }
+
       setFormSubmitted(true);
       setFormData({
         lastName: '',
@@ -62,7 +109,11 @@ function BranchPage() {
         motivation: '',
       });
       setCvFile(null);
-    }, 1500);
+    } catch (err: any) {
+      setSubmitError(err.message || 'Error occurred.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -278,6 +329,12 @@ function BranchPage() {
                       </div>
                     ) : (
                       <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
+                        
+                        {submitError && (
+                          <div className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 text-xs rounded-xl font-medium">
+                            {submitError}
+                          </div>
+                        )}
                         
                         {/* Last Name & First Name */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

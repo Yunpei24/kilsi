@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import RevealOnScroll from '../ui/RevealOnScroll';
+import { supabase } from '../../lib/supabaseClient';
 
 interface FAQItemProps {
   question: string;
@@ -39,6 +40,7 @@ function FAQItem({ question, answer, isOpen, onClick }: FAQItemProps) {
 function FAQSection() {
   const { language } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [faqs, setFaqs] = useState<Array<{ q: string; a: string }>>([]);
 
   const faqData = {
     fr: [
@@ -79,7 +81,38 @@ function FAQSection() {
     ]
   };
 
-  const currentFAQ = faqData[language] || faqData.fr;
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('faq_items')
+          .select('*')
+          .order('display_order', { ascending: true });
+        
+        if (error) throw error;
+        
+        if (data && data.length > 0) {
+          const formatted = data.map(item => ({
+            q: language === 'en' ? (item.question_en || item.question_fr) : item.question_fr,
+            a: language === 'en' ? (item.answer_en || item.answer_fr) : item.answer_fr
+          }));
+          setFaqs(formatted);
+        } else {
+          useStaticFallback();
+        }
+      } catch (err) {
+        // Transparently fall back to static translated content on connection issues
+        useStaticFallback();
+      }
+    };
+
+    const useStaticFallback = () => {
+      const staticItems = faqData[language] || faqData.fr;
+      setFaqs(staticItems.map(item => ({ q: item.q, a: item.a })));
+    };
+
+    fetchFaqs();
+  }, [language]);
 
   const handleItemClick = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -101,7 +134,7 @@ function FAQSection() {
 
         <RevealOnScroll direction="up" delay={200}>
           <div className="glass-card p-6 sm:p-8 rounded-2xl border border-white/5 bg-white/2">
-            {currentFAQ.map((item, index) => (
+            {faqs.map((item, index) => (
               <FAQItem
                 key={index}
                 question={item.q}

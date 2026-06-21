@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { blogArticles } from '../../data/blogData';
+import { blogArticles, type Article } from '../../data/blogData';
 import Section from '../layout/Section';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import aboutVideo from '../../assets/videos/about-bg.mp4';
+import { supabase } from '../../lib/supabaseClient';
 
 function BlogListPage() {
   const { language } = useLanguage();
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     // SEO setup
@@ -24,6 +26,39 @@ function BlogListPage() {
         "Discover Kilsi Insights, our blog dedicated to artificial intelligence, sovereign cloud, data annotation, and MLOps in Africa."
       );
     }
+
+    // Fetch published blogs from Supabase
+    const fetchArticles = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          const mapped = data.map((b: any) => ({
+            id: b.id,
+            title: { fr: b.title_fr || '', en: b.title_en || '' },
+            date: b.date || '',
+            author: { fr: b.author_fr || '', en: b.author_en || '' },
+            readTime: { fr: b.read_time_fr || '', en: b.read_time_en || '' },
+            summary: { fr: b.summary_fr || '', en: b.summary_en || '' },
+            content: { fr: b.content_fr || [], en: b.content_en || [] }
+          }));
+          setArticles(mapped);
+        } else {
+          setArticles(blogArticles);
+        }
+      } catch (err) {
+        // Fallback silently to static blog articles
+        setArticles(blogArticles);
+      }
+    };
+
+    fetchArticles();
   }, [language]);
 
   return (
@@ -54,7 +89,7 @@ function BlogListPage() {
       {/* Articles Grid */}
       <section className="py-24 px-6 lg:px-12 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {blogArticles.map((article, index) => (
+          {articles.map((article, index) => (
             <RevealOnScroll key={article.id} direction="up" delay={index * 150}>
               <Link to={`/blog/${article.id}`} className="block h-full cursor-pointer group">
                 <article className="glass-card p-8 rounded-2xl border border-white/5 hover:border-kilsi-gold/25 h-full flex flex-col justify-between transition-all duration-300 hover:scale-[1.01] bg-white/2">

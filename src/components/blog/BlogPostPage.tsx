@@ -1,17 +1,59 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { blogArticles } from '../../data/blogData';
+import { blogArticles, type Article } from '../../data/blogData';
 import Section from '../layout/Section';
 import GlowButton from '../ui/GlowButton';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import aboutVideo from '../../assets/videos/about-bg.mp4';
+import { supabase } from '../../lib/supabaseClient';
 
 function BlogPostPage() {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
+  const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const article = id ? blogArticles.find((art) => art.id === id) : null;
+  useEffect(() => {
+    const fetchArticle = async () => {
+      if (!id) return;
+      try {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error) throw error;
+
+        if (data) {
+          const mapped: Article = {
+            id: data.id,
+            title: { fr: data.title_fr || '', en: data.title_en || '' },
+            date: data.date || '',
+            author: { fr: data.author_fr || '', en: data.author_en || '' },
+            readTime: { fr: data.read_time_fr || '', en: data.read_time_en || '' },
+            summary: { fr: data.summary_fr || '', en: data.summary_en || '' },
+            content: { fr: data.content_fr || [], en: data.content_en || [] }
+          };
+          setArticle(mapped);
+        } else {
+          useStaticFallback();
+        }
+      } catch (err) {
+        useStaticFallback();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const useStaticFallback = () => {
+      const staticArt = blogArticles.find((art) => art.id === id);
+      setArticle(staticArt || null);
+    };
+
+    fetchArticle();
+  }, [id, language]);
 
   useEffect(() => {
     if (article) {
@@ -22,6 +64,15 @@ function BlogPostPage() {
       );
     }
   }, [article, language]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-kilsi-night flex flex-col justify-center items-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-kilsi-gold border-solid mb-4" />
+        <p className="text-kilsi-gray text-sm">Chargement de l'article / Loading article...</p>
+      </div>
+    );
+  }
 
   if (!article) {
     return (

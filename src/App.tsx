@@ -10,6 +10,8 @@ import ContactSection from './components/contact/ContactSection'
 import BranchPage from './components/branch/BranchPage'
 import BlogListPage from './components/blog/BlogListPage'
 import BlogPostPage from './components/blog/BlogPostPage'
+import AdminLoginPage from './components/admin/AdminLoginPage'
+import AdminDashboardPage from './components/admin/AdminDashboardPage'
 import ScrollToTop from './components/layout/ScrollToTop'
 import PageTransition from './components/layout/PageTransition'
 import { useLanguage } from './context/LanguageContext';
@@ -67,6 +69,8 @@ function App() {
             <Route path="/branches/:id" element={<PageTransition><BranchPage /></PageTransition>} />
             <Route path="/blog" element={<PageTransition><BlogListPage /></PageTransition>} />
             <Route path="/blog/:id" element={<PageTransition><BlogPostPage /></PageTransition>} />
+            <Route path="/admin/login" element={<PageTransition><AdminLoginPage /></PageTransition>} />
+            <Route path="/admin" element={<PageTransition><AdminDashboardPage /></PageTransition>} />
           </Routes>
         </main>
       </div>

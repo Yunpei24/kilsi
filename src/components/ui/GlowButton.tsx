@@ -2,11 +2,13 @@ import type { ReactNode } from 'react';
 
 interface GlowButtonProps {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   href?: string;
   variant?: 'gold' | 'blue';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const sizeClasses: Record<NonNullable<GlowButtonProps['size']>, string> = {
@@ -39,30 +41,30 @@ function GlowButton({
   variant = 'gold',
   size = 'md',
   className = '',
+  disabled = false,
+  type = 'button',
 }: GlowButtonProps) {
   const baseClasses = [
     'inline-flex items-center justify-center',
     'rounded-full font-display font-semibold tracking-wide',
     'transition-all duration-300 ease-out',
-    'hover:scale-105 active:scale-[0.98]',
+    disabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 active:scale-[0.98] animate-glow-pulse cursor-pointer',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-kilsi-night',
-    'animate-glow-pulse',
-    'cursor-pointer',
     sizeClasses[size],
     variantClasses[variant],
     className,
   ].join(' ');
 
-  if (href) {
+  if (href && !disabled) {
     return (
-      <a href={href} className={baseClasses}>
+      <a href={href} className={baseClasses} onClick={onClick}>
         {children}
       </a>
     );
   }
 
   return (
-    <button type="button" onClick={onClick} className={baseClasses}>
+    <button type={type} onClick={onClick} disabled={disabled} className={baseClasses}>
       {children}
     </button>
   );
