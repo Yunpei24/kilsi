@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import RevealOnScroll from '../ui/RevealOnScroll';
+import FaqCircuitCanvas from './FaqCircuitCanvas';
 import { supabase } from '../../lib/supabaseClient';
 
 interface FAQItemProps {
@@ -45,8 +46,8 @@ function FAQSection() {
   const faqData = {
     fr: [
       {
-        q: "Qu'est-ce que Kilsi AI ?",
-        a: "Kilsi AI est une start-up technologique ouest-africaine qui propose une offre d'excellence complète couvrant l'ingénierie logicielle, l'intelligence artificielle, le traitement de données, l'exploitation géospatiale par drone, les infrastructures cloud souveraines et la formation technique."
+        q: "Qu'est-ce que Kilsi Tech ?",
+        a: "Kilsi Tech est une start-up technologique ouest-africaine qui propose une offre d'excellence complète couvrant l'ingénierie logicielle, l'intelligence artificielle (via sa branche Kilsi AI), le traitement de données, l'exploitation géospatiale par drone, les infrastructures cloud souveraines et la formation technique."
       },
       {
         q: "Comment fonctionne le projet FasoLabel ?",
@@ -57,14 +58,14 @@ function FAQSection() {
         a: "La souveraineté numérique protège l'économie et la sécurité nationale. En hébergeant les architectures et les pipelines d'IA sur des serveurs et datacenters locaux au Burkina Faso, nous évitons la dépendance technologique étrangère et garantissons le respect de la confidentialité des données."
       },
       {
-        q: "Qui est le fondateur de Kilsi AI ?",
+        q: "Qui est le fondateur de Kilsi Tech ?",
         a: "Le fondateur et CEO est Joshua Juste E. Yun Pei NIKIEMA, PhD en Intelligence Artificielle. Sa vision est d'ancrer une expertise technologique de pointe en Afrique de l'Ouest et de la faire rayonner à l'échelle internationale."
       }
     ],
     en: [
       {
-        q: "What is Kilsi AI?",
-        a: "Kilsi AI is a West African technology startup offering a complete range of services covering software engineering, artificial intelligence, data engineering, geospatial drone imaging, sovereign cloud infrastructure, and technical training."
+        q: "What is Kilsi Tech?",
+        a: "Kilsi Tech is a West African technology startup offering a complete range of services covering software engineering, artificial intelligence (through its Kilsi AI branch), data engineering, geospatial drone imaging, sovereign cloud infrastructure, and technical training."
       },
       {
         q: "How does the FasoLabel project work?",
@@ -75,7 +76,7 @@ function FAQSection() {
         a: "Digital sovereignty protects both national security and the economy. By hosting AI architectures and pipelines on local datacenters in Burkina Faso, we eliminate foreign technological dependency and ensure total data privacy."
       },
       {
-        q: "Who is the founder of Kilsi AI?",
+        q: "Who is the founder of Kilsi Tech?",
         a: "The founder and CEO is Joshua Juste E. Yun Pei NIKIEMA, PhD in Artificial Intelligence. His vision is to anchor cutting-edge technological expertise in West Africa and make it shine globally."
       }
     ]
@@ -119,8 +120,9 @@ function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-24 border-t border-white/5 bg-kilsi-night relative">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="faq" className="py-24 border-t border-white/5 bg-kilsi-night relative overflow-hidden">
+      <FaqCircuitCanvas />
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
         <RevealOnScroll direction="up">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold uppercase tracking-widest text-kilsi-gold block mb-4">

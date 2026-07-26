@@ -174,7 +174,7 @@ const ContactSection: React.FC = () => {
             <RevealOnScroll direction="right" className="flex-1 flex flex-col">
               <div className="glass-card overflow-hidden rounded-2xl flex-1 min-h-[300px] relative group">
                 <iframe
-                  title="Kilsi AI Office Location"
+                  title="Kilsi Tech Office Location"
                   src="https://maps.google.com/maps?q=Kilsi%20AI,%20Ouagadougou,%20Burkina%20Faso&t=&z=14&ie=UTF8&iwloc=&output=embed"
                   className="absolute inset-0 w-full h-full border-none transition-all duration-700"
                   style={{ filter: 'grayscale(1) invert(90%) hue-rotate(180deg) contrast(1.2) opacity(0.5)' }}

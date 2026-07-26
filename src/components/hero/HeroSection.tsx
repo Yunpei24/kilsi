@@ -1,34 +1,34 @@
-import ParticleCanvas from './ParticleCanvas';
+import SolarSystemCanvas from './SolarSystemCanvas';
+import BrandLogo from '../ui/BrandLogo';
 import GlowButton from '../ui/GlowButton';
 import ScrollIndicator from '../ui/ScrollIndicator';
 import Section from '../layout/Section';
-import kilsiLogo from '../../assets/logos/kilsi_logo_complet_blanc.svg';
-import heroVideo from '../../assets/videos/hero-bg.mp4';
 import { useLanguage } from '../../context/LanguageContext';
 
 /**
  * HeroSection
  * Full-viewport, SpaceX-inspired hero — the very first thing visitors see.
- * Animated particle background, brand logo, tagline, CTA.
+ * Animated solar-system background (Milky Way, luminescent sun with solar
+ * flares, detailed planets), Kilsi Tech wordmark, tagline, CTA.
  */
 const HeroSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <Section id="hero" videoSrc={heroVideo}>
+    <Section id="hero" overlayOpacity={0.3}>
 
-      {/* ── Particle field ─────────────────────────────────────── */}
-      <ParticleCanvas />
+      {/* ── Solar system background ────────────────────────────── */}
+      <SolarSystemCanvas />
 
       {/* ── Foreground content ─────────────────────────────────── */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
-        {/* Logo */}
-        <img
-          src={kilsiLogo}
-          alt="Kilsi AI"
-          className="mb-10 w-[200px] animate-fade-in opacity-0 md:w-[280px] lg:w-[300px]"
+        {/* Brand */}
+        <h1
+          className="mb-10 animate-fade-in opacity-0"
           style={{ animationDelay: '0.2s' }}
-        />
+        >
+          <BrandLogo variant="hero" />
+        </h1>
 
         {/* Tagline */}
         <p

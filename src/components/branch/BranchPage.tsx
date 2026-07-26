@@ -118,7 +118,7 @@ function BranchPage() {
 
   useEffect(() => {
     if (branch) {
-      const pageTitle = `${branch.name} — Kilsi AI`;
+      const pageTitle = `${branch.name} — Kilsi Tech`;
       const description = branch.tagline[language];
       document.title = pageTitle;
       document.querySelector('meta[name="description"]')?.setAttribute('content', description);

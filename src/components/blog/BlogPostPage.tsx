@@ -145,8 +145,8 @@ function BlogPostPage() {
             </h3>
             <p className="text-sm text-kilsi-gray mb-8">
               {language === 'fr' 
-                ? 'Découvrez comment Kilsi AI conçoit des infrastructures souveraines et des applications sur-mesure.' 
-                : 'Discover how Kilsi AI builds sovereign infrastructures and bespoke applications.'}
+                ? 'Découvrez comment Kilsi Tech conçoit des infrastructures souveraines et des applications sur-mesure.'
+                : 'Discover how Kilsi Tech builds sovereign infrastructures and bespoke applications.'}
             </p>
             <div className="flex gap-4 justify-center items-center flex-wrap">
               <Link to="/#services">

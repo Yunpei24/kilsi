@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useScrollDirection from '../../hooks/useScrollDirection';
-import logo from '../../assets/logos/kilsi_logo_complet_blanc.svg';
+import BrandLogo from '../ui/BrandLogo';
 import { useLanguage } from '../../context/LanguageContext';
 
 function Navbar() {
@@ -65,16 +65,13 @@ function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link 
-          to="/#hero" 
-          className="flex items-center z-55" 
+        <Link
+          to="/#hero"
+          className="flex items-center z-55 transition-transform duration-300 hover:scale-102"
           onClick={(e) => handleNavClick(e, '/#hero')}
+          aria-label="Kilsi Tech — Accueil"
         >
-          <img
-            src={logo}
-            alt="Kilsi AI Logo"
-            className="h-8 lg:h-10 w-auto transition-transform duration-300 hover:scale-102"
-          />
+          <BrandLogo variant="nav" />
         </Link>
 
         {/* Desktop Navigation */}

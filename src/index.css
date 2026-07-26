@@ -135,11 +135,13 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Une carte peut définir --branch-hover / --branch-glow (cartes de branches)
+   pour teinter son survol ; sinon, bleu Kilsi par défaut. */
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(31, 91, 255, 0.3);
+  border-color: var(--branch-hover, rgba(31, 91, 255, 0.3));
   box-shadow:
-    0 0 30px rgba(31, 91, 255, 0.1),
+    0 0 30px var(--branch-glow, rgba(31, 91, 255, 0.1)),
     0 20px 60px rgba(0, 0, 0, 0.3);
   transform: translateY(-4px);
 }

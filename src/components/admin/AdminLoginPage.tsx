@@ -68,7 +68,7 @@ function AdminLoginPage() {
             Espace Administration
           </h1>
           <p className="text-xs text-kilsi-gray/60 mb-8 text-center uppercase tracking-widest">
-            Kilsi AI Secure Console
+            Kilsi Tech Secure Console
           </p>
 
           <form onSubmit={handleLogin} className="w-full flex flex-col gap-5">

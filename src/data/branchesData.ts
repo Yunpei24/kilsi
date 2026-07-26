@@ -87,8 +87,8 @@ export const branchesData: Record<string, BranchDetails> = {
     },
     videoSrc: aiVideo,
     overview: {
-      fr: 'Kilsi AI est le cœur de notre dispositif d\'innovation. Nous concevons des modèles d\'apprentissage automatique (Machine Learning) sur-mesure et nous industrialisons leur mise en production via des pipelines MLOps fiables pour répondre aux défis spécifiques de l\'Afrique.',
-      en: 'Kilsi AI is the core of our innovation. We design custom machine learning models and industrialize their production deployment through reliable MLOps pipelines to solve African-specific challenges.',
+      fr: 'Kilsi AI est la branche phare et le cœur du dispositif d\'innovation de Kilsi Tech. Nous concevons des modèles d\'apprentissage automatique (Machine Learning) sur-mesure et nous industrialisons leur mise en production via des pipelines MLOps fiables pour répondre aux défis spécifiques de l\'Afrique.',
+      en: 'Kilsi AI is Kilsi Tech\'s flagship branch and the core of its innovation. We design custom machine learning models and industrialize their production deployment through reliable MLOps pipelines to solve African-specific challenges.',
     },
     stats: [
       { value: '10x', label: { fr: 'Accélération des processus', en: 'Process Acceleration Rate' } },
@@ -282,7 +282,7 @@ export const branchesData: Record<string, BranchDetails> = {
       },
       {
         title: { fr: 'Mentorat individuel d\'excellence', en: 'Individual Mentorship' },
-        desc: { fr: 'Accompagnement par des professionnels expérimentés du réseau Kilsi AI.', en: 'Coaching by experienced professionals from the Kilsi AI network.' }
+        desc: { fr: 'Accompagnement par des professionnels expérimentés du réseau Kilsi Tech.', en: 'Coaching by experienced professionals from the Kilsi Tech network.' }
       }
     ],
     partners: [

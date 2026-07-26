@@ -8,6 +8,7 @@ import TeamSection from './components/team/TeamSection'
 import FAQSection from './components/faq/FAQSection'
 import ContactSection from './components/contact/ContactSection'
 import BranchPage from './components/branch/BranchPage'
+import KilsiAIPage from './components/branch/KilsiAIPage'
 import BlogListPage from './components/blog/BlogListPage'
 import BlogPostPage from './components/blog/BlogPostPage'
 import AdminLoginPage from './components/admin/AdminLoginPage'
@@ -21,10 +22,10 @@ function Home() {
 
   useEffect(() => {
     if (language === 'fr') {
-      document.title = "Kilsi AI — Intelligence built in Africa, designed for the world";
+      document.title = "Kilsi Tech — Intelligence built in Africa, designed for the world";
       document.querySelector('meta[name="description"]')?.setAttribute(
-        'content', 
-        "Kilsi AI — Solutions d'intelligence artificielle, ingénierie logicielle, data, drone et cloud. Ouagadougou, Burkina Faso."
+        'content',
+        "Kilsi Tech — Solutions d'intelligence artificielle, ingénierie logicielle, data, drone et cloud. Ouagadougou, Burkina Faso."
       );
       document.querySelector('meta[property="og:description"]')?.setAttribute(
         'content', 
@@ -32,10 +33,10 @@ function Home() {
       );
       document.documentElement.setAttribute('lang', 'fr');
     } else {
-      document.title = "Kilsi AI — Intelligence built in Africa, designed for the world";
+      document.title = "Kilsi Tech — Intelligence built in Africa, designed for the world";
       document.querySelector('meta[name="description"]')?.setAttribute(
-        'content', 
-        "Kilsi AI — Artificial intelligence solutions, software engineering, data, drone, and cloud. Ouagadougou, Burkina Faso."
+        'content',
+        "Kilsi Tech — Artificial intelligence solutions, software engineering, data, drone, and cloud. Ouagadougou, Burkina Faso."
       );
       document.querySelector('meta[property="og:description"]')?.setAttribute(
         'content', 
@@ -66,6 +67,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/branches/ai" element={<PageTransition><KilsiAIPage /></PageTransition>} />
             <Route path="/branches/:id" element={<PageTransition><BranchPage /></PageTransition>} />
             <Route path="/blog" element={<PageTransition><BlogListPage /></PageTransition>} />
             <Route path="/blog/:id" element={<PageTransition><BlogPostPage /></PageTransition>} />

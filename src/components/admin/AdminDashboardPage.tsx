@@ -716,7 +716,7 @@ function AdminDashboardPage() {
                   required
                   value={faqForm.question_fr}
                   onChange={(e) => setFaqForm({ ...faqForm, question_fr: e.target.value })}
-                  placeholder="Qu'est-ce que Kilsi AI ?"
+                  placeholder="Qu'est-ce que Kilsi Tech ?"
                   className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-kilsi-light placeholder-kilsi-gray/30 focus:border-kilsi-blue focus:outline-none focus:ring-1 focus:ring-kilsi-blue/50 transition w-full text-sm"
                 />
               </div>
@@ -730,7 +730,7 @@ function AdminDashboardPage() {
                   required
                   value={faqForm.question_en}
                   onChange={(e) => setFaqForm({ ...faqForm, question_en: e.target.value })}
-                  placeholder="What is Kilsi AI?"
+                  placeholder="What is Kilsi Tech?"
                   className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-kilsi-light placeholder-kilsi-gray/30 focus:border-kilsi-blue focus:outline-none focus:ring-1 focus:ring-kilsi-blue/50 transition w-full text-sm"
                 />
               </div>

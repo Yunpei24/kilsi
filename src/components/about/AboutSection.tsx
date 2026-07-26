@@ -1,7 +1,7 @@
 import Section from '../layout/Section';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import AnimatedCounter from '../ui/AnimatedCounter';
-import aboutVideo from '../../assets/videos/about-bg.mp4';
+import AfricaRadianceCanvas from './AfricaRadianceCanvas';
 import { useLanguage } from '../../context/LanguageContext';
 
 function AboutSection() {
@@ -15,8 +15,9 @@ function AboutSection() {
   ] as const;
 
   return (
-    <Section id="about" diagonalGradient videoSrc={aboutVideo}>
-      <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-20">
+    <Section id="about" diagonalGradient overlayOpacity={0.25}>
+      <AfricaRadianceCanvas />
+      <div className="relative z-10 flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-20">
         {/* ── Left Column — Text (60%) ── */}
         <div className="w-full lg:w-[60%]">
           <RevealOnScroll direction="left">

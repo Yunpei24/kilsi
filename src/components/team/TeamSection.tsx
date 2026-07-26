@@ -1,20 +1,22 @@
 import Section from '../layout/Section';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import TeamMemberCard from './TeamMemberCard';
+import AuroraConstellationCanvas from './AuroraConstellationCanvas';
 import founderImg from '../../assets/images/founder.png';
-import teamVideo from '../../assets/videos/team-bg.mp4';
 import { useLanguage } from '../../context/LanguageContext';
 
 /**
  * TeamSection
  * Fourth section — founder spotlight & team grid.
  * Asymmetric 2-column layout on desktop: large founder card + recruitment grid.
+ * Animated aurora + constellation background (the team as a constellation).
  */
 const TeamSection: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <Section id="team" videoSrc={teamVideo}>
+    <Section id="team" overlayOpacity={0.3}>
+      <AuroraConstellationCanvas />
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         {/* Section header */}
         <RevealOnScroll direction="up">

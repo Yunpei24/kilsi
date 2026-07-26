@@ -1,16 +1,17 @@
 import Section from '../layout/Section';
 import ServiceCard from './ServiceCard';
+import SolutionsOrbitCanvas from './SolutionsOrbitCanvas';
 import { services } from '../../data/services';
 import RevealOnScroll from '../ui/RevealOnScroll';
-import servicesVideo from '../../assets/videos/services-bg.mp4';
 import { useLanguage } from '../../context/LanguageContext';
 
 const ServicesSection = () => {
   const { language, t } = useLanguage();
 
   return (
-    <Section id="services" videoSrc={servicesVideo}>
-      <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
+    <Section id="services" overlayOpacity={0.3}>
+      <SolutionsOrbitCanvas />
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-12">
         {/* Section header */}
         <div className="mb-16 text-center">
           {/* Label */}
@@ -41,13 +42,14 @@ const ServicesSection = () => {
         {/* Services grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <ServiceCard 
-              key={service.name} 
+            <ServiceCard
+              key={service.name}
               name={service.name}
               subtitle={service.subtitle[language]}
               description={service.description[language]}
               icon={service.icon}
-              index={index} 
+              color={service.color}
+              index={index}
             />
           ))}
         </div>
