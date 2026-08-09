@@ -3,7 +3,7 @@ import Section from '../layout/Section';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import GlowButton from '../ui/GlowButton';
 import Footer from '../layout/Footer';
-import contactVideo from '../../assets/videos/contact-bg.mp4';
+import ContactSignalCanvas from './ContactSignalCanvas';
 import { useLanguage } from '../../context/LanguageContext';
 
 /**
@@ -19,7 +19,8 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <Section id="contact" videoSrc={contactVideo}>
+    <Section id="contact" overlayOpacity={0.3}>
+      <ContactSignalCanvas />
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         {/* Section header */}
         <RevealOnScroll direction="up">
