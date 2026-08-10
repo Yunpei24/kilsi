@@ -36,7 +36,6 @@ export const company = {
   },
   postalAddress: 'S/C 1563 Ouaga 09, Ouagadougou, Burkina Faso',
   email: 'contact@kilsi.ai',
-  phone: '+226 05 15 07 50',
   director: 'Joshua Juste E. Yun Pei NIKIEMA',
   directorRole: { fr: 'Gérant', en: 'Managing Director' },
   purpose: {
@@ -100,7 +99,6 @@ export const legalDocs: LegalDoc[] = [
               { label: { fr: 'N° IFU', en: 'Tax ID no. (IFU)' }, value: company.ifu },
               { label: { fr: 'Immatriculation', en: 'Registration' }, value: { fr: `${company.registryCourt.fr}, le ${company.registeredOn.fr}`, en: `${company.registryCourt.en}, ${company.registeredOn.en}` } },
               { label: { fr: 'Régime fiscal', en: 'Tax regime' }, value: company.taxRegime },
-              { label: { fr: 'Téléphone', en: 'Phone' }, value: company.phone },
               { label: { fr: 'Courriel', en: 'Email' }, value: company.email },
             ],
           },
@@ -171,8 +169,8 @@ export const legalDocs: LegalDoc[] = [
         blocks: [
           {
             type: 'p',
-            fr: `Pour signaler un contenu inexact, une atteinte à vos droits ou une difficulté technique, écrivez à ${company.email} ou appelez le ${company.phone}. Nous accusons réception sous cinq (5) jours ouvrés.`,
-            en: `To report inaccurate content, an infringement of your rights, or a technical issue, write to ${company.email} or call ${company.phone}. We acknowledge receipt within five (5) business days.`,
+            fr: `Pour signaler un contenu inexact, une atteinte à vos droits ou une difficulté technique, écrivez à ${company.email}. Nous accusons réception sous cinq (5) jours ouvrés.`,
+            en: `To report inaccurate content, an infringement of your rights, or a technical issue, write to ${company.email}. We acknowledge receipt within five (5) business days.`,
           },
         ],
       },
